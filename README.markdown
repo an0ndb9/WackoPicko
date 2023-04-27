@@ -32,5 +32,5 @@ access wackopicko on your browser:
 
     @adamdoupe - adamdoupe Adam Doupe
     @PinkSheep - PinkSheep Olivier
-    @0xch - 0xch Chris
-    @stevex86-old - stevex86-old Steve King Jr.
+    @0xch - Chris
+    @stevex86-old - Steve King Jr.
