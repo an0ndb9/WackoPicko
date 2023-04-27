@@ -5,40 +5,51 @@ require_once("../include/html_functions.php");
 require_once("../include/functions.php");
 
 session_start();
-
 $error = False;
+
 if (isset($_POST['firstname']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['againpass']) && isset($_POST['lastname'])
     && $_POST['username'] && $_POST['password'] && $_POST['againpass'] && $_POST['firstname'] && $_POST['lastname'])
 {
-   if ($_POST['password'] != $_POST['againpass'])
-   {
-      $flash['error'] = "The passwords do not match. Try again";
-      $error = True;
-   }
-   else if ($new_id = Users::create_user($_POST['username'], $_POST['password'], $_POST['firstname'], $_POST['lastname'], False))
-   {
-      Users::login_user($new_id);
-      http_redirect(Users::$HOME_URL);
-   }
-   else
-   {
-      if (mysql_errno() == 1062)
-      {
-	 $flash['error'] = "Username '{$_POST['username']}' is already in use.";
-      }
-      $error = True;
-   }
+	if ($_POST['password'] != $_POST['againpass'])
+	{
+		$flash['error'] = "The passwords do not match. Try again";
+		$error = True;
+	}
+	else
+	{
+		$username = mysql_real_escape_string($_POST['username']);
+		$password = mysql_real_escape_string($_POST['password']);
+		$firstname = mysql_real_escape_string($_POST['firstname']);
+		$lastname = mysql_real_escape_string($_POST['lastname']);
+		
+		if ($new_id = Users::create_user($username, $password, $firstname, $lastname, False))
+		{
+			Users::login_user($new_id);
+			http_redirect(Users::$HOME_URL);
+		}
+		else
+		{
+			if (mysql_errno() == 1062)
+			{
+				$flash['error'] = "Username '{$username}' is already in use.";
+			}
+			$error = True;
+		}
+	}
 }
+
 else
 {
-   $flash['error'] = "All fields are required";
-   $error = True;
+	$flash['error'] = "All fields are required";
+	$error = True;
 }
 
 if ($error)
 {
-   our_header();
-   ?>
+	our_header();
+?>
+
+
 <div class="column prepend-1 span-24 first last" >
 <h2> Register for an account!</h2>
 <p>
