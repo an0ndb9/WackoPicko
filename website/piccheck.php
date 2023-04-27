@@ -7,6 +7,11 @@ if (!isset($_FILES['userfile']) && !isset($_POST['name']))
    http_redirect("/");
 }
 
+// Validate Input Parameter - [name]
+
+if (!preg_match('/^[a-zA-Z0-9_]+$/', $_POST['name'])) {
+   http_redirect("/");
+}
 
 $type = $_FILES['userfile']['type'];
 $name = $_POST['name'];
