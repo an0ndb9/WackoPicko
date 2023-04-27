@@ -11,9 +11,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
    if ($user = Users::check_login($_POST['username'], $_POST['password'], True))
    {
       Users::login_user($user['id']);
-      if (isset($_POST['next']))
+      if (isset($_POST['next']) && preg_match('/^[a-zA-Z]+$/', $_POST['next']))
       {
-	 http_redirect($_POST['next']);
+         http_redirect($_POST['next']);
       }
       else
       {
