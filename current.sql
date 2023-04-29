@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: wackopicko
 -- ------------------------------------------------------
--- Server version	5.0.67-0ubuntu6
+-- Server version       5.0.67-0ubuntu6
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -47,7 +47,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'admin','d033e22ae348aeb5660fc2140aec35850c4da997'),(2,'adamd','c533607326f2b815a7c23701be52989dac8bdbb1'),(3,'admin','d033e22ae348aeb5660fc2140aec35850c4da997'),(4,'adam','0ace61762d02afdf98f793d98c37edf696b675b2'),(5,'bob','42a9037223cdbfe0c49ef0032f0a1f3392af3fe3');
+INSERT INTO `admin` VALUES (1,'admin','359fa08fb31d3b8c490cc384a373bf41a52e0f38'),(2,'adamd','f8a9efc861a347c10f7282ce8f50eb567165f067');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `admin_session`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 CREATE TABLE `admin_session` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` varchar(256) NOT NULL,
   `admin_id` int(11) NOT NULL,
   `created_on` datetime NOT NULL,
   PRIMARY KEY  (`id`)
@@ -171,7 +171,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'blah.	      ',2,3,'2009-01-12 19:05:45'),(2,'That\\\'s an awesome butt...',2,2,'2009-01-12 19:26:21'),(3,'	      testing',2,5,'2009-01-21 15:32:44'),(4,'This is my house, what do you guys think?',2,11,'2009-02-18 14:55:39');
+INSERT INTO `comments` VALUES (1,'blah.       ',2,3,'2009-01-12 19:05:45'),(2,'That\\\'s an awesome butt...',2,2,'2009-01-12 19:26:21'),(3,'          testing',2,5,'2009-01-21 15:32:44'),(4,'This is my house, what do you guys think?',2,11,'2009-02-18 14:55:39');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +198,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `comments_preview` WRITE;
 /*!40000 ALTER TABLE `comments_preview` DISABLE KEYS */;
-INSERT INTO `comments_preview` VALUES (1,'blah.	      ',2,3,'2009-01-12 19:01:49'),(2,'blah.	      ',2,3,'2009-01-12 19:02:12'),(3,'blah.	      ',2,3,'2009-01-12 19:02:52'),(4,'blah.	      ',2,3,'2009-01-12 19:05:45'),(5,'You suck. Should I use this?	      ',2,3,'2009-01-12 19:06:43'),(6,'That\\\'s an awesome butt...',2,2,'2009-01-12 19:21:40'),(7,'That\\\'s an awesome butt...',2,2,'2009-01-12 19:25:52'),(8,'That\\\'s an awesome butt...',2,2,'2009-01-12 19:26:21'),(9,'	      test',2,5,'2009-01-21 15:06:05'),(11,'	      testing',2,5,'2009-01-21 15:32:44'),(12,'This is my house, what do you guys think?',2,11,'2009-02-18 14:55:39');
+INSERT INTO `comments_preview` VALUES (1,'blah.       ',2,3,'2009-01-12 19:01:49'),(2,'blah.          ',2,3,'2009-01-12 19:02:12'),(3,'blah.          ',2,3,'2009-01-12 19:02:52'),(4,'blah.           ',2,3,'2009-01-12 19:05:45'),(5,'You suck. Should I use this?           ',2,3,'2009-01-12 19:06:43'),(6,'That\\\'s an awesome butt...',2,2,'2009-01-12 19:21:40'),(7,'That\\\'s an awesome butt...',2,2,'2009-01-12 19:25:52'),(8,'That\\\'s an awesome butt...',2,2,'2009-01-12 19:26:21'),(9,'          test',2,5,'2009-01-21 15:06:05'),(11,'          testing',2,5,'2009-01-21 15:32:44'),(12,'This is my house, what do you guys think?',2,11,'2009-02-18 14:55:39');
 /*!40000 ALTER TABLE `comments_preview` ENABLE KEYS */;
 UNLOCK TABLES;
 
