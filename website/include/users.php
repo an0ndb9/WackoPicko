@@ -2,6 +2,7 @@
 
 require_once("ourdb.php");
 
+
 class Users
 {
    static public $HOME_URL = "/users/home.php";
@@ -13,7 +14,8 @@ class Users
 
    function get_user($userid)
    {
-      $query = sprintf("SELECT * from users where id = '%d'", mysql_real_escape_string($userid));
+      $query = sprintf("SELECT * from users where id = '%d'",
+                       mysql_real_escape_string($userid));
       $res = mysql_query($query);
       if ($res)
       {
@@ -46,7 +48,7 @@ class Users
                           mysql_real_escape_string($lastname),
                           mysql_real_escape_string($salt),
                           mysql_real_escape_string($initial_bux));
-
+                          
       }
       if ($res = mysql_query($query))
       {
@@ -63,7 +65,7 @@ class Users
             return False;
          }
       }
-
+         
    }
 
    function login_user($userid)
@@ -86,7 +88,7 @@ class Users
       {
          $query = sprintf("SELECT * from `users` where `login` like '%s' and `password` = SHA1( CONCAT('%s', `salt`)) limit 1;",
                            mysql_real_escape_string($username),
-                           mysql_real_escape_string($pass));     
+                           mysql_real_escape_string($pass)); 
       }
       else
       {
@@ -132,7 +134,7 @@ class Users
             $to_ret[] = $row;
          }
          return $to_ret;
-
+         
       }
       else
       {
@@ -142,11 +144,11 @@ class Users
          }
          return False;
       }
-
-
+      
+      
    }
 
-    function current_user()
+   function current_user()
    {
       if (isset($_SESSION['userid']))
       {
